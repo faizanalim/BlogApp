@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlogApp.DAL.Models
 {
-    class UserContext
+    public class UserContext
     {
     }
 }
