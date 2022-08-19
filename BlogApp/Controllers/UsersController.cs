@@ -1,5 +1,4 @@
-﻿using BlogApp.DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +9,7 @@ namespace BlogApp.Controllers
     public class UsersController : Controller
     {
         // GET: Users
-        private UserContext db = new UserContext();
+       // private UserContext db = new UserContext();
         // GET: Users
         [Authorize]
         public ActionResult Index()
