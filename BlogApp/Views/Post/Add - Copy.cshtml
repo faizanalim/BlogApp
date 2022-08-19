@@ -1,0 +1,26 @@
+﻿@model BlogApp.DAL.Models.Blog
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Add", "Post", FormMethod.Post))
+        {
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title)
+            @Html.Label("Publication Date")
+            @Html.EditorFor(model => model.Publication_Date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description);
+            <input type="submit" name="Submit" value="POST" />
+        }
+    </div>
+</body>
+</html>
+
