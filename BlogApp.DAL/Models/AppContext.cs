@@ -8,7 +8,7 @@ namespace BlogApp.DAL.Models
 {
     public class AppContext : IdentityDbContext<User>
     {
-        public AppContext() : base(@"Data Source=DESKTOP-5AGALVD;Initial Catalog = BlogApp;Integrated Security = true")
+        public AppContext() : base("DefaultConnectionString")
         {
         }
 
