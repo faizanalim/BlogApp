@@ -14,8 +14,7 @@ namespace BlogApp.Controllers
         [Authorize]
         public ActionResult Index()
         {
-
-            return View();
+            return Redirect("/Users/Login");
         }
 
         public ActionResult Register()
@@ -25,7 +24,7 @@ namespace BlogApp.Controllers
 
         public ActionResult Login()
         {
-          
+
             return View();
         }
     }
