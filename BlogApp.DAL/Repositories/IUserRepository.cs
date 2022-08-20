@@ -11,6 +11,7 @@ namespace BlogApp.DAL.Repositories
     {
         Task<UserModel> Login(string username, string password);
         Task<AppResponse> Register(UserModel user);
-        Task<User> GetById(string id);
+        Task<User> GetIdentityUserById(string id);
+        Task<UserModel> GetById(string id);
     }
 }

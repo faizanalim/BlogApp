@@ -20,9 +20,15 @@ namespace BlogApp.BAL.Service
             return await UserRepository.Login(username, password);
         }
 
-        public async Task<AppResponse> Register(UserModel user)
+        public async Task<AppResponse> Register(UserModel model)
         {
-            return await UserRepository.Register(user);
+            var response = await UserRepository.Register(model);
+            if (response.IsSuccess)
+            {
+                var user = await UserRepository.GetById(Convert.ToString(response.Data));
+                response.Data = user;
+            }
+            return response;
         }
     }
 }

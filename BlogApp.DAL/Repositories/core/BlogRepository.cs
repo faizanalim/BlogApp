@@ -18,7 +18,7 @@ namespace BlogApp.DAL.Repositories.core
         }
         public async Task<AppResponse> Create(string userId, string title, string content)
         {
-            var user = await UserRepository.GetById(userId);
+            var user = await UserRepository.GetIdentityUserById(userId);
             var appContext = AppContextInstance.GetInstance();
             {
                 var blog = new Blog()

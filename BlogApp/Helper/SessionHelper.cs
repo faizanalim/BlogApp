@@ -43,7 +43,7 @@ namespace BlogApp.Helper
         {
             try
             {
-                var userRole = Convert.ToString(Context.Session["UserID"]);
+                var userRole = Convert.ToString(Context.Session["UserRole"]);
                 if (string.IsNullOrEmpty(userRole))
                     return UserRole.Anonymous;
                 switch (userRole.ToLower())
@@ -60,6 +60,12 @@ namespace BlogApp.Helper
             {
                 return UserRole.Anonymous;
             }
+        }
+        public bool IsAdmin() 
+        {
+            var id = GetUserId();
+            var userRole = GetUserRole();
+            return !string.IsNullOrEmpty(id) && userRole == UserRole.Admin;
         }
     }
 }

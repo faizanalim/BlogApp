@@ -29,9 +29,27 @@ namespace BlogApp.DAL.Repositories.core
             return await CreateUser(user.FirstName, user.LastName, user.EmailAddress, user.Password, UserRole.Consumer.ToString());
         }
 
-        public async Task<User> GetById(string id)
+        public async Task<User> GetIdentityUserById(string id)
         {
             return await UserManager.FindByIdAsync(id);
+        }
+        public async Task<UserModel> GetById(string id)
+        {
+            var user = await GetIdentityUserById(id);
+            var userRole = (await UserManager.GetRolesAsync(user.Id)).FirstOrDefault();
+
+            UserRole userRoleParsed;
+            if (!Enum.TryParse<UserRole>(userRole, out userRoleParsed))
+                return null;
+
+            return new UserModel()
+            {
+                EmailAddress = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = user.Id,
+                UserRole = userRoleParsed
+            };
         }
         private async Task<AppResponse> CreateUser(string firstName, string lastName, string emailAddress, string password, string userRole)
         {
@@ -47,7 +65,7 @@ namespace BlogApp.DAL.Repositories.core
             };
             var result = await UserManager.CreateAsync(user, password);
             await UserManager.AddToRoleAsync(user.Id, userRole);
-            return new AppResponse(true, string.Empty);
+            return new AppResponse(true, string.Empty, user.Id);
         }
         private async Task<UserModel> GetAuthentication(string username, string password)
         {
@@ -59,12 +77,18 @@ namespace BlogApp.DAL.Repositories.core
             var userRole = (await UserManager.GetRolesAsync(user.Id)).FirstOrDefault();
             if (string.IsNullOrEmpty(userRole))
                 throw new Exception("User authorization failed.");
+
+            UserRole userRoleParsed;
+            if (!Enum.TryParse<UserRole>(userRole, out userRoleParsed))
+                return null;
+
             return new UserModel()
             {
                 EmailAddress = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Id = user.Id
+                Id = user.Id,
+                UserRole = userRoleParsed
             };
         }
 
