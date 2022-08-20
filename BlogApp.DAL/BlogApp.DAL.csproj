@@ -81,6 +81,12 @@
       <DependentUpon>202208201025532_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogApp.Model\BlogApp.Model.csproj">
+      <Project>{C4CE8BC9-9249-4F97-B6CB-69936F36E448}</Project>
+      <Name>BlogApp.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

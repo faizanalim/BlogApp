@@ -205,6 +205,10 @@
       <Project>{20151DD6-35C8-487C-8982-2C7F625AFB4F}</Project>
       <Name>BlogApp.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlogApp.Model\BlogApp.Model.csproj">
+      <Project>{c4ce8bc9-9249-4f97-b6cb-69936f36e448}</Project>
+      <Name>BlogApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
