@@ -54,13 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202208191638538_Init.cs" />
-    <Compile Include="Migrations\202208191638538_Init.Designer.cs">
-      <DependentUpon>202208191638538_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208191642088_seed-data.cs" />
-    <Compile Include="Migrations\202208191642088_seed-data.Designer.cs">
-      <DependentUpon>202208191642088_seed-data.cs</DependentUpon>
+    <Compile Include="Migrations\202208201025532_Init.cs" />
+    <Compile Include="Migrations\202208201025532_Init.Designer.cs">
+      <DependentUpon>202208201025532_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppContext.cs" />
@@ -84,11 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208191638538_Init.resx">
-      <DependentUpon>202208191638538_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208191642088_seed-data.resx">
-      <DependentUpon>202208191642088_seed-data.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202208201025532_Init.resx">
+      <DependentUpon>202208201025532_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

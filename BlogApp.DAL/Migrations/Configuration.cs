@@ -18,11 +18,12 @@ namespace BlogApp.DAL.Migrations
         protected override void Seed(BlogApp.DAL.Models.AppContext context)
         {
             //  This method will be called after migrating to the latest version.
-
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
+            //  to avoid creating duplicate seed data.
             context.Roles.AddOrUpdate(x => x.Id,
-               new IdentityRole() { Id = "1", Name = "Admin" },
-               new IdentityRole() { Id = "2", Name = "Consumer" }
-             );
+              new IdentityRole() { Id = "1", Name = "Admin" },
+              new IdentityRole() { Id = "2", Name = "Consumer" }
+            );
             var userManager = new UserManager<User>(new UserStore<User>(context));
             var user = new User
             {
