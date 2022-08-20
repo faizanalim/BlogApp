@@ -52,10 +52,6 @@
       <Project>{20151DD6-35C8-487C-8982-2C7F625AFB4F}</Project>
       <Name>BlogApp.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BlogApp.Model\BlogApp.Model.csproj">
-      <Project>{83EB1DFC-75E3-4B03-B1A5-40E41C50737D}</Project>
-      <Name>BlogApp.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

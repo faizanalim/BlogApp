@@ -77,12 +77,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlogApp.Model\BlogApp.Model.csproj">
-      <Project>{83EB1DFC-75E3-4B03-B1A5-40E41C50737D}</Project>
-      <Name>BlogApp.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\202208201025532_Init.resx">
       <DependentUpon>202208201025532_Init.cs</DependentUpon>
     </EmbeddedResource>

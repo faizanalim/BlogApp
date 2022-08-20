@@ -14,24 +14,16 @@ namespace BlogApp.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            return View();
+            var userId = SessionHelper.GetUserId();
+
+            if (string.IsNullOrWhiteSpace(userId))
+                return Redirect("/Users/Login");
+
+            var blogs = BlogService.GetAll(userId);
+            return View(blogs);
         }
 
        
-        public ActionResult Add()
-        {
-            BlogModel obj = new BlogModel();
-            return View(obj);
-        }
-
-        [HttpPost]
-        public async  Task<ActionResult> Add(BlogModel model)
-        {
-            var result = await BlogService.Create(model.Id.ToString(), model.Title, model.Content);
-            // return View();
-            // return RedirectToAction("ThankYou", "Account", new { whatever = message });
-            return RedirectToAction("Index", "POST");
-        }
-
+       
     }
 }
