@@ -24,8 +24,19 @@ namespace BlogApp.Model
         {
             get
             {
-                return string.IsNullOrWhiteSpace(Content)  || Content.Length <= 100 ? Content : Content.Substring(0, 100);
+                return string.IsNullOrWhiteSpace(Content) || Content.Length <= 100 ? Content : Content.Substring(0, 100);
             }
+        }
+
+        public string PulbishedDateFormat
+        {
+
+            get
+            {
+
+                return PublishedDate.Value.ToString("dd-mm-yy");
+            }
+
         }
 
     }

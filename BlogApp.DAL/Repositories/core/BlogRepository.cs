@@ -48,7 +48,8 @@ namespace BlogApp.DAL.Repositories.core
                     {
                         Id = b.Id,
                         Title = b.Title,
-                        Content = b.Content
+                        Content = b.Content,
+                        PublishedDate = b.PublishedDate.Value
                     }).ToList();
         }
 
