@@ -9,10 +9,9 @@ using System.Web.Mvc;
 
 namespace BlogApp.Controllers
 {
-    public class PostController : Controller
+    public class PostController : BaseController
     {
         // GET: Post
-        private BlogService BlogService;
         public ActionResult Index()
         {
             return View();
@@ -28,7 +27,6 @@ namespace BlogApp.Controllers
         [HttpPost]
         public async  Task<ActionResult> Add(BlogModel model)
         {
-            BlogService = new BlogService();
             var result = await BlogService.Create(model.Id.ToString(), model.Title, model.Content);
             // return View();
             // return RedirectToAction("ThankYou", "Account", new { whatever = message });
