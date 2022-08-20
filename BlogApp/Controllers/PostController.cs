@@ -30,7 +30,9 @@ namespace BlogApp.Controllers
         {
             BlogService = new BlogService();
             var result = await BlogService.Create(model.Id.ToString(), model.Title, model.Content);
-            return View();
+            // return View();
+            // return RedirectToAction("ThankYou", "Account", new { whatever = message });
+            return RedirectToAction("Index", "POST");
         }
 
     }
