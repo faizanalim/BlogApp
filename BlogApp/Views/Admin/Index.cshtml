@@ -1,0 +1,30 @@
+﻿
+<h2>Import Posts</h2>
+
+@{
+
+    var UrlImportData = "https://sq1-api-test.herokuapp.com/posts";
+}
+
+@using (Html.BeginForm("Import", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("Import Url", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("ImportData", UrlImportData, new { @class = "form-control", type = "text", })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Import Posts" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

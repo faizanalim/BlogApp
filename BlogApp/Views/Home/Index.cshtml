@@ -15,12 +15,19 @@
 }
 
 
-<div class="jumbotron">
-    <h1>Admin: @sessionHelper.IsAdmin()</h1>
+@*<div class="jumbotron">
+        <h1>Admin: @sessionHelper.IsAdmin()</h1>
 
-</div>
+    </div>*@
+<div style="margin-top:5%"></div>
 
-
+@if (sessionHelper.IsAdmin() == true)
+{
+    <div id="btnimport">
+        @Html.ActionLink("ImportData", "Index", "Admin")
+    </div>
+}
+<div style="margin-top:2%"></div>
 <table id="example" class="display" style="width:100%">
     <thead>
         <tr>
