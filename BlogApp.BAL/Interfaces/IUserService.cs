@@ -7,5 +7,6 @@ namespace BlogApp.BAL.Service
     {
         Task<UserModel> Login(string username, string password);
         Task<AppResponse> Register(UserModel user);
+        Task<UserModel> GetUserByUsername(string username);
     }
 }

@@ -10,11 +10,11 @@ namespace BlogApp.Model
     public class SQ1APIBlog
     {
         [JsonProperty("title")]
-        string Title { get; set; }
+        public  string Title { get; set; }
         [JsonProperty("description")]
-        string Description { get; set; }
+        public string Description { get; set; }
         [JsonProperty("publication_date")]
-        string PublicationDate { get; set; }
+        public string PublicationDate { get; set; }
     }
     public class SQ1APIBlogData
     {

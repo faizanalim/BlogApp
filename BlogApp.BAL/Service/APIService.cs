@@ -1,4 +1,5 @@
-﻿using BlogApp.Model;
+﻿using BlogApp.BAL.Interfaces;
+using BlogApp.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BlogApp.BAL.Service
 {
-    public class APIService
+    public class APIService: IAPIService
     {
 
         public async Task<List<SQ1APIBlog>> GetBlogsApiData(string url)
@@ -18,7 +19,7 @@ namespace BlogApp.BAL.Service
             var data = JsonConvert.DeserializeObject<SQ1APIBlogData>(json);
             return data.Data;
         }
-        private async Task<string> ExecuteGet(string url)
+        public async Task<string> ExecuteGet(string url)
         {
             var client = new HttpClient();
             var response = await client.GetAsync(url);
@@ -26,5 +27,7 @@ namespace BlogApp.BAL.Service
             var str = await content.ReadAsStringAsync();
             return str;
         }
+
+        
     }
 }

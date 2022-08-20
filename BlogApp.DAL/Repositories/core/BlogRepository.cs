@@ -65,5 +65,40 @@ namespace BlogApp.DAL.Repositories.core
                 Content = blog.Content
             };
         }
+
+
+        public async Task<AppResponse> ImportBlogs(string userId, List<Blog> blogs, string userLoggedIn)
+        {
+            try
+            {
+                // user check
+                var user = await UserRepository.GetIdentityUserById(userId);
+
+                var appContext = AppContextInstance.GetInstance();
+                {
+                    foreach (var b in blogs)
+                    {
+                        var blog = new Blog()
+                        {
+                            Content = b.Content,
+                            Title = b.Title,
+                            CreatedOn = DateTime.UtcNow,
+                            ModifiedOn = DateTime.UtcNow,
+                            //ModifiedBy = userLoggedIn,
+                            //CreatedBy = userLoggedIn,
+                            PublishedDate = DateTime.UtcNow,
+                            User = user,
+                            IsPublished = true,
+                            IsDeleted = false,
+                        };
+                        appContext.Blogs.Add(blog);
+                    }
+
+                    await appContext.SaveChangesAsync();
+                    return new AppResponse(true, string.Empty);
+                }
+            }
+            catch (Exception e) { return new AppResponse(false, e.Message); }
+        }
     }
 }

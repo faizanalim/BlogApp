@@ -30,5 +30,11 @@ namespace BlogApp.BAL.Service
             }
             return response;
         }
+
+        public async Task<UserModel> GetUserByUsername(string username)
+        {
+            var user = await UserRepository.GetUserByUsername(username);
+            return user;
+        }
     }
 }

@@ -51,6 +51,27 @@ namespace BlogApp.DAL.Repositories.core
                 UserRole = userRoleParsed
             };
         }
+        public async Task<UserModel> GetUserByUsername(string username)
+        {
+            var user = await UserManager.FindByNameAsync(username);
+            if(user == null)
+                return null;
+
+            var userRole = (await UserManager.GetRolesAsync(user.Id)).FirstOrDefault();
+
+            UserRole userRoleParsed;
+            if (!Enum.TryParse<UserRole>(userRole, out userRoleParsed))
+                return null;
+
+            return new UserModel()
+            {
+                EmailAddress = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = user.Id,
+                UserRole = userRoleParsed
+            };
+        }
         private async Task<AppResponse> CreateUser(string firstName, string lastName, string emailAddress, string password, string userRole)
         {
             var user = new User

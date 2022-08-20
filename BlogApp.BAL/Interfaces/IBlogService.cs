@@ -1,4 +1,5 @@
-﻿using BlogApp.Model;
+﻿using BlogApp.DAL.Models;
+using BlogApp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,5 +10,6 @@ namespace BlogApp.BAL.Service
         Task<BlogModel> GetById(string userId, int id);
         Task<List<BlogModel>> GetAll(string userId);
         Task<AppResponse> Create(string userId, string title, string content);
+        Task<AppResponse> ImportBlogs(string userId, List<Blog> blogs, string userLoggedIn);
     }
 }

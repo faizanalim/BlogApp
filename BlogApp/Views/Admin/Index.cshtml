@@ -10,21 +10,27 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-
-        <div class="form-group">
-            @Html.Label("Import Url", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("ImportData", UrlImportData, new { @class = "form-control", type = "text", })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Import Posts" class="btn btn-primary" />
-            </div>
+<div class="form-horizontal">
+    <p>@ViewBag.ErrorMessage</p>
+    <div class="form-group">
+        @Html.Label("Import Url", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("ImportData", UrlImportData, new { @class = "form-control", type = "text", })
         </div>
     </div>
+    <div class="form-group">
+        @Html.Label("Username", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("Username", null, new { @class = "form-control", type = "text", @placeholder="Enter username" })
+        </div>
+    </div>
+    
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Import Posts" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
 }
