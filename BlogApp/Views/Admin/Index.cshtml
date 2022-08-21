@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <p>@ViewBag.ErrorMessage</p>
+    <p style="color:red">@ViewBag.ErrorMessage</p>
     <div class="form-group">
         @Html.Label("Import Url", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
