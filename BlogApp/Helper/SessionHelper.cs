@@ -34,8 +34,9 @@ namespace BlogApp.Helper
                 new Guid(id);
                 return id;
             }
-            catch
+            catch (Exception ex)
             {
+
                 return null;
             }
         }
@@ -51,7 +52,7 @@ namespace BlogApp.Helper
                     case "admin":
                         return UserRole.Admin;
                     case "consumer":
-                        return UserRole.Consumer; 
+                        return UserRole.Consumer;
                     default:
                         return UserRole.Anonymous;
                 }
@@ -61,11 +62,26 @@ namespace BlogApp.Helper
                 return UserRole.Anonymous;
             }
         }
-        public bool IsAdmin() 
+        public bool IsAdmin()
         {
             var id = GetUserId();
             var userRole = GetUserRole();
             return !string.IsNullOrEmpty(id) && userRole == UserRole.Admin;
+        }
+
+        public string DisplayName()
+        {
+
+            try
+            {
+                var displayName = Convert.ToString(Context.Session["DisplayName"]);
+
+                return displayName;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

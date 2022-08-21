@@ -11,7 +11,7 @@ namespace BlogApp.Controllers
     public class UsersController : BaseController
     {
         // GET: Users
-       // private UserContext db = new UserContext();
+        // private UserContext db = new UserContext();
         // GET: Users
         [Authorize]
         public ActionResult Index()
@@ -52,12 +52,20 @@ namespace BlogApp.Controllers
         {
             var authResponse = await UserService.Login(model.Username, model.Password);
             var isAuthenticated = authResponse != null && !string.IsNullOrEmpty(authResponse.Id);
-            if (isAuthenticated) { 
+            if (isAuthenticated)
+            {
                 SessionHelper.SaveUserSession(authResponse.Id, string.Format("{0} {1}", authResponse.FirstName, authResponse.LastName), authResponse.UserRole.ToString());
                 return Redirect("/");
             }
 
             return View();
+        }
+
+        public ActionResult LogOut()
+        {
+            SessionHelper.DestroyUserSession();
+
+            return RedirectToAction("Login", "Users");
         }
     }
 }

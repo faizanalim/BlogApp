@@ -9,9 +9,13 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.6.0/dt-1.12.1/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-    
 
+    @using BlogApp.Helper;
 </head>
+@{
+
+    var sessionHelper = new SessionHelper();
+}
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -27,8 +31,23 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Post", "Add", "Home")</li>
-                   
+
                 </ul>
+            </div>
+
+            <div style="width:auto;float:right">
+                @if (!string.IsNullOrEmpty(sessionHelper.DisplayName()) )
+                {
+                    var userName = sessionHelper.DisplayName();
+                <strong style="color:greenyellow"> @userName</strong>
+                    @Html.ActionLink("Log Out", "Logout", "Users")
+                }
+                else
+                {
+                    @Html.ActionLink("Register", "Register", "Users")
+                    <span> | </span>
+                    @Html.ActionLink("Log In", "Login", "Users")
+                }
             </div>
         </div>
     </div>

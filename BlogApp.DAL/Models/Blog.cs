@@ -20,8 +20,8 @@ namespace BlogApp.DAL.Models
         
         public DateTime CreatedOn { get; set; }
         public DateTime ModifiedOn { get; set; }
-        public int CreatedBy { get; set; }
-        public int ModifiedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
         public User User { get; set; }
     }
 }
