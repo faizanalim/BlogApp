@@ -6,15 +6,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace BlogApp.Controllers
 {
+    
     public class HomeController : BaseController
     {
+
+        [OutputCache(Duration = 10, VaryByParam = "none", VaryByCustom = "LoggedUserName")]
         public async Task<ActionResult> Index()
         {
             var userId = SessionHelper.GetUserId();
-
+            System.Web.HttpContext.Current.Session["Id"] = userId;
+            
             if (string.IsNullOrWhiteSpace(userId))
                 return Redirect("/Users/Login");
 
@@ -32,8 +37,6 @@ namespace BlogApp.Controllers
         {
             var userId = SessionHelper.GetUserId();
             var result = await BlogService.Create(userId, model.Title, model.Content);
-            // return View();
-            // return RedirectToAction("ThankYou", "Account", new { whatever = message });
             return RedirectToAction("Index");
         }
     }
