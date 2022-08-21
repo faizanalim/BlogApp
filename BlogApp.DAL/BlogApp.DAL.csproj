@@ -57,17 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202208201025532_Init.cs" />
-    <Compile Include="Migrations\202208201025532_Init.Designer.cs">
-      <DependentUpon>202208201025532_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208201754411_blog createdby changed to string.cs" />
-    <Compile Include="Migrations\202208201754411_blog createdby changed to string.designer.cs">
-      <DependentUpon>202208201754411_blog createdby changed to string.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\SeedData.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppContextInstance.cs" />
@@ -79,14 +71,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208201025532_Init.resx">
-      <DependentUpon>202208201025532_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208201754411_blog createdby changed to string.resx">
-      <DependentUpon>202208201754411_blog createdby changed to string.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlogApp.Model\BlogApp.Model.csproj">

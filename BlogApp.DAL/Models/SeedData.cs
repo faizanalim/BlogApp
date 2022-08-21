@@ -1,25 +1,18 @@
-namespace BlogApp.DAL.Migrations
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlogApp.DAL.Models
 {
-    using BlogApp.DAL.Models;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<BlogApp.DAL.Models.AppContext>
+    public static class SeedData
     {
-        public Configuration()
+        public static void CreateSeedData(Models.AppContext context)
         {
-            AutomaticMigrationsEnabled = false;
-        }
-
-        protected override void Seed(BlogApp.DAL.Models.AppContext context)
-        {
-            //  This method will be called after migrating to the latest version.
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
             context.Roles.AddOrUpdate(x => x.Id,
               new IdentityRole() { Id = "1", Name = "Admin" },
               new IdentityRole() { Id = "2", Name = "Consumer" }
