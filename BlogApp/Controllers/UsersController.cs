@@ -64,7 +64,9 @@ namespace BlogApp.Controllers
         public ActionResult LogOut()
         {
             SessionHelper.DestroyUserSession();
-
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+            Response.Cache.SetNoStore();
             return RedirectToAction("Login", "Users");
         }
     }
